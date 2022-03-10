@@ -1,0 +1,8 @@
+<nav>
+  <div class="menu">
+    <div *ngFor="let piece of navbar; let i = index" (click)="showAltMenu(i)">{{piece.name}}</div>
+  </div>
+  <div class="altMenu">
+    <div *ngFor="let option of altMenu">{{option.name}}</div>
+  </div>
+</nav>
