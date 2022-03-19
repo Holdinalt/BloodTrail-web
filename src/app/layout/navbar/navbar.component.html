@@ -1,8 +1,19 @@
 <nav>
+
   <div class="menu">
-    <div *ngFor="let piece of navbar; let i = index" (click)="showAltMenu(i)">{{piece.name}}</div>
+    <div *ngFor="let piece of navbar; let i = index" (click)="showAltMenu(i)">
+      {{piece.name}}
+    </div>
   </div>
+
   <div class="altMenu">
-    <div *ngFor="let option of altMenu">{{option.name}}</div>
+
+    <div *ngFor="let option of altMenu" >
+      <a routerLink="{{option.selector}}">
+        {{option.name}}
+      </a>
+    </div>
+
   </div>
+
 </nav>

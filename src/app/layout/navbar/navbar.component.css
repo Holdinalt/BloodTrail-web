@@ -1,0 +1,22 @@
+nav{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+.menu{
+  display: flex;
+  flex-direction: row;
+}
+
+.menu > div{
+  padding: 10px;
+}
+
+.altMenu{
+  display: flex;
+  flex-direction: row;
+}
+
+.altMenu > div{
+  padding: 10px;
+}

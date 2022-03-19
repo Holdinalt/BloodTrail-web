@@ -22,14 +22,14 @@ export class NavbarComponent implements OnInit {
     this.navbar = [];
 
     this.addToNavbar(new NavbarPiece('Стримы', [
-      new NavOption('Twitch', 'stream-twitch'),
-      new NavOption('Trovo', 'stream-trovo')
+      new NavOption('Twitch', 'stream/twitch'),
+      new NavOption('Trovo', 'stream/trovo')
     ]));
     this.addToNavbar(new NavbarPiece('Музыка', [
-      new NavOption('Spotify', 'music-spotify')
+      new NavOption('Spotify', 'music/spotify')
     ]));
     this.addToNavbar(new NavbarPiece('Игры', [
-      new NavOption('League of Legends', 'game-lol')
+      new NavOption('League of Legends', 'game/lol')
     ]))
 
   }
