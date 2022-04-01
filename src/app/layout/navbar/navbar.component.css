@@ -1,22 +1,104 @@
-nav{
+.main{
+  display: flex;
+  flex-direction: row;
+  margin-left: 19px;
+  margin-top: 16px;
+}
+
+.main img{
+  /* Layout Properties */
+  top: 16px;
+  left: 19px;
+  width: 79px;
+  height: 71px;
+  /* UI Properties */
+  opacity: 1;
+}
+
+.main span{
+  margin-left: 10px;
+  margin-top: 11.5px;
+  top: 28px;
+  left: 108px;
+  width: 136px;
+  height: 48px;
+  text-align: left;
+  font: normal normal bold 38px/48px Amatic SC;
+  letter-spacing: 2.47px;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  opacity: 1;
+}
+
+.menu{
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
-}
-.menu{
-  display: flex;
-  flex-direction: row;
+  margin-left: 32px;
 }
 
-.menu > div{
-  padding: 10px;
+nav{
+  mix-blend-mode: normal;
+  opacity: 1;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  inset: 1px 1569px -6px 1px;
+  width: 351px;
+  background: #220236 no-repeat padding-box;
+  border-right: 0.5px solid #A300FF;
+}
+
+.menuOption{
+  /* Layout Properties */
+
+  /* UI Properties */
+  opacity: 1;
+  margin-top: 30px;
+}
+
+.menuOption .optionName{
+
+  text-align: left;
+  font: normal normal medium Roboto;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  opacity: 1;
 }
 
 .altMenu{
+
+  /* UI Properties */
+  opacity: 1;
+}
+
+.altMenu .altOption{
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
 }
 
-.altMenu > div{
-  padding: 10px;
+.altMenu .icon img{
+  top: 402px;
+  left: 32px;
+  width: 23px;
+  height: 23px;
+  /* UI Properties */
+  opacity: 1;
+}
+
+.altOption .name{
+  /* Layout Properties */
+
+  margin-left: 20px;
+  /* UI Properties */
+  text-align: left;
+  font: normal normal 300 20px/26px Roboto;
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.altOption .name a{
+  text-decoration: none;
+  color: #FFFFFF;
 }

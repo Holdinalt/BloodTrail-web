@@ -6,6 +6,6 @@ export class NavbarPiece{
 }
 
 export class NavOption{
-  constructor(public name: string, public selector: string) {
+  constructor(public name: string, public selector: string, public img?: string) {
   }
 }

@@ -21,15 +21,21 @@ export class NavbarComponent implements OnInit {
 
     this.navbar = [];
 
-    this.addToNavbar(new NavbarPiece('Стримы', [
-      new NavOption('Twitch', 'stream/twitch'),
-      new NavOption('Trovo', 'stream/trovo')
+    this.addToNavbar(new NavbarPiece('Стрим', [
+      new NavOption('Twitch', 'stream/twitch', 'assets/icons/twitch-icon.svg'),
+      new NavOption('Trovo', 'stream/trovo', 'assets/icons/trovo-icon.svg')
     ]));
     this.addToNavbar(new NavbarPiece('Музыка', [
-      new NavOption('Spotify', 'music/spotify')
+      new NavOption('Spotify', 'music/spotify', 'assets/icons/spotify-icon.svg'),
+      // new NavOption('Яндекс Музыка', 'music/yandexmusic'),
+      // new NavOption('YouTube', 'music/youtube', 'assets/icons/youtube.svg')
     ]));
     this.addToNavbar(new NavbarPiece('Игры', [
-      new NavOption('League of Legends', 'game/lol')
+      new NavOption('League of Legends', 'game/lol', 'assets/icons/league-of-legends-icon.svg'),
+      // new NavOption('Teamfight Tactics', 'game/tft', 'assets/icons/tft-icon.svg')
+    ]))
+    this.addToNavbar(new NavbarPiece('Подключения', [
+      new NavOption('DonationAlerts', 'connections/donationalerts', 'assets/icons/')
     ]))
 
   }

@@ -1,19 +1,30 @@
 <nav>
 
-  <div class="menu">
-    <div *ngFor="let piece of navbar; let i = index" (click)="showAltMenu(i)">
-      {{piece.name}}
-    </div>
+  <div class="main">
+    <img src="assets/pictures/Иконка.png" alt="">
+    <span>BloodTrail</span>
   </div>
 
-  <div class="altMenu">
+  <div class="menu">
+    <div class="menuOption" *ngFor="let piece of navbar; let i = index" (click)="showAltMenu(i)">
 
-    <div *ngFor="let option of altMenu" >
-      <a routerLink="{{option.selector}}">
-        {{option.name}}
-      </a>
+      <div class="optionName">
+        {{piece.name}}:
+      </div>
+
+      <div class="altMenu">
+        <div class="altOption" *ngFor="let option of piece.options" >
+          <div class="icon">
+            <img src="{{option.img}}" alt="">
+          </div>
+          <div class="name">
+            <a routerLink="{{option.selector}}">
+              {{option.name}}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 
 </nav>
