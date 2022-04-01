@@ -1,4 +1,4 @@
-export class NavbarPiece{
+export class NavbarPieceModel {
 
   constructor(public name: string, public options: NavOption[]) {
   }

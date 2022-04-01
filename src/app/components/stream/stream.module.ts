@@ -10,7 +10,6 @@ import { TrovoComponent } from './trovo/trovo.component';
     TrovoComponent
   ],
   exports: [
-    TwitchComponent
   ],
   imports: []
 })

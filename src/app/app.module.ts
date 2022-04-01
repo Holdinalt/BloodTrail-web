@@ -5,6 +5,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {StreamModule} from "./components/stream/stream.module";
 import {OptionsService} from "./options.service";
+import {GamesModule} from "./components/games/games.module";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {OptionsService} from "./options.service";
   imports: [
     BrowserModule,
     StreamModule,
+    GamesModule,
     AppRoutingModule
   ],
   providers: [OptionsService],
