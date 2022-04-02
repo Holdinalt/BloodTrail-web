@@ -25,24 +25,37 @@
 }
 
 .box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
   margin-top: 40px;
-  width: 1264px;
+  width: 1229px;
   background: #520184 0 0 no-repeat;
   box-shadow: 0 3px 6px #00000029;
   border-radius: 8px;
   opacity: 1;
   padding-bottom: 35px;
+  padding-left: 35px;
 }
 
 .card{
-  margin-left: 35px;
-  margin-top: 39px;
+  margin-left: 25px;
+  margin-top: 25px;
   padding: 32px 30px 0 30px;
-  width: 382px;
-  height: 183px;
+  width: 322px;
+  height: 144px;
   /* UI Properties */
-  background: #220236 0 0 no-repeat padding-box;
+  background: #220236 0 0 no-repeat;
   border-radius: 8px;
+}
+
+.card:first-child{
+  margin-left: 0;
+}
+
+.card:nth-child(n+4){
+  margin-left: 0;
 }
 
 .card .head .name{
