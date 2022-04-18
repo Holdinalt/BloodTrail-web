@@ -6,7 +6,12 @@
   </div>
 
   <div class="menu">
-    <div class="menuOption" *ngFor="let piece of navbar; let i = index" (click)="showAltMenu(i)">
+
+    <div class="panel">
+      <img src="assets/icons/option-panel-icon.svg" alt="">
+      <a routerLink="/panel">Панель управления</a>
+    </div>
+    <div class="menuOption" *ngFor="let piece of navbar; let i = index">
 
       <div class="optionName">
         {{piece.name}}:

@@ -6,11 +6,14 @@ import {AppRoutingModule} from "./app-routing.module";
 import {StreamModule} from "./components/stream/stream.module";
 import {OptionsService} from "./options.service";
 import {GamesModule} from "./components/games/games.module";
+import {NavPanelHandlerService} from "./nav-panel-handler.service";
+import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    ControlPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,10 @@ import {GamesModule} from "./components/games/games.module";
     GamesModule,
     AppRoutingModule
   ],
-  providers: [OptionsService],
+  providers: [
+    OptionsService,
+    NavPanelHandlerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

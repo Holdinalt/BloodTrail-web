@@ -17,7 +17,7 @@ export class ConfigurationManagerService {
         new MessageToChat(0, 'Cмерть', 'КАКУМЕР KEKWait'),
         new MessageToChat(1, 'Cоло убийство', 'Пентакилл'),
         new MessageToChat(2, 'Пентакилл', 'INHUMAN REACTION'),
-        new MessageToChat(3, 'Кража дракона', 'Легчайший дрейк EZ')
+        //new MessageToChat(3, 'Кража дракона', 'Легчайший дрейк EZ')
       ]);
 
   }

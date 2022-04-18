@@ -32,7 +32,8 @@
             "styles": [
               "src/styles.css",
               "src/assets/fonts/Roboto/roboto.css",
-              "src/assets/fonts/AmaticSC/amaticsc.css"
+              "src/assets/fonts/AmaticSC/amaticsc.css",
+              "src/assets/html/toggle/ios-like.less"
             ],
             "scripts": []
           },

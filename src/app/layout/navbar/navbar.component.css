@@ -98,7 +98,24 @@ nav{
   opacity: 1;
 }
 
-.altOption .name a{
+a{
   text-decoration: none;
+  width: 182px;
+  height: 26px;
+  /* UI Properties */
+  text-align: left;
+  font: normal normal 300 20px/26px Roboto;
+  letter-spacing: 0;
   color: #FFFFFF;
+}
+
+.panel{
+  display: flex;
+  flex-direction: row;
+  margin-top: 58px;
+}
+
+.panel a{
+  margin-left: 21px;
+  align-self: center;
 }
