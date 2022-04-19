@@ -30,13 +30,14 @@
   flex-wrap: wrap;
   justify-content: left;
   margin-top: 40px;
-  width: 1229px;
+  width: 1196px;
   background: #520184 0 0 no-repeat;
   box-shadow: 0 3px 6px #00000029;
   border-radius: 8px;
   opacity: 1;
   padding-bottom: 35px;
   padding-left: 35px;
+  padding-right: 35px;
 }
 
 .card{
@@ -121,13 +122,19 @@
 .box hr{
   margin-left: 0;
   margin-top: 21px;
-  margin-right: 35px;
 }
 
 .boxHead{
   margin-top: 27px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.boxHead div{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
 }
 
 .boxHead span{
@@ -148,5 +155,18 @@
 
 .card .head .left{
   align-self: center;
+}
+
+.card .right{
+  display: flex;
+  flex-direction: row;
+}
+
+.card .settings{
+  cursor: pointer;
+}
+
+.card .toggleWrapper{
+  margin-left: 10px;
 }
 

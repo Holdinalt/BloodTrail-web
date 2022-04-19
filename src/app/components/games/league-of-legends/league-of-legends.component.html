@@ -1,38 +1,48 @@
 <div class="content">
   <span class="category">Игры</span>
   <span class="templateName">League of Legends</span>
+
   <div class="box">
-
     <div class="boxHead">
-      <div class="toggleWrapper">
-        <input type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked>
-        <label for="toggleHead"></label>
+      <div>
+        <div class="toggleWrapper">
+          <input type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked>
+          <label for="toggleHead"></label>
+        </div>
+        <span>Сообщения в чат</span>
       </div>
-      <span>Сообщения в чат</span>
+      <div>
+        <input #chatMessagesSpoiler hidden="hidden" checked="checked" type="checkbox"/>
+        <img class="spoilerToggle" src="assets/icons/spoiler-big-icon.svg" alt="" (click)="toggleSpoiler(chatMessagesSpoiler, chatMessages, $event)">
+      </div>
     </div>
+    <div #chatMessages class="spoilerContent">
 
-    <hr>
+      <hr>
 
-    <div class="messageDelay">
-      <div><span>Задержка сообщений</span></div>
-      <div><input><span style="margin-left: 15px">мс</span></div>
-    </div>
-
-    <div class="cardRow">
-      <div class="card" *ngFor="let messageToChat of messagesToChat, let i = index">
-        <div class="head">
-          <div class="left">
-            <span class="name">{{messageToChat.name}}</span>
-          </div>
-          <div class="right">
-            <div class="toggleWrapper">
-              <input type="checkbox" name="toggle{{i}}" class="mobileToggle" id="toggle{{i}}" checked>
-              <label for="toggle{{i}}"></label>
+      <div class="messageDelay">
+        <div><span>Задержка сообщений</span></div>
+        <div><input><span style="margin-left: 15px">мс</span></div>
+      </div>
+      <div class="cardRow">
+        <div class="card" *ngFor="let messageToChat of messagesToChat, let i = index">
+          <div class="head">
+            <div class="left">
+              <span class="name">{{messageToChat.name}}</span>
+            </div>
+            <div class="right">
+              <div class="settings">
+                <img src="assets/icons/settings-icon.svg" alt="">
+              </div>
+              <div class="toggleWrapper">
+                <input type="checkbox" name="toggle{{i}}" class="mobileToggle" id="toggle{{i}}" checked>
+                <label for="toggle{{i}}"></label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="content">
-          {{messageToChat.message}}
+          <div class="content">
+            {{messageToChat.message}}
+          </div>
         </div>
       </div>
     </div>
