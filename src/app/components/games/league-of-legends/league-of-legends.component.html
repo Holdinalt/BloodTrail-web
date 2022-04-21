@@ -2,14 +2,15 @@
   <span class="category">Игры</span>
   <span class="templateName">League of Legends</span>
 
-  <div class="box">
+  <div class="box" [ngClass]="{off: messagesBlock.required == false}">
     <div class="boxHead">
       <div>
         <div class="toggleWrapper">
-          <input type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked>
+          <input type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked
+                 [checked]="messagesBlock.required == true" (change)="messagesBlock.required = !messagesBlock.required">
           <label for="toggleHead"></label>
         </div>
-        <span>Сообщения в чат</span>
+        <span>{{messagesBlock.name}}</span>
       </div>
       <div>
         <input #chatMessagesSpoiler hidden="hidden" checked="checked" type="checkbox"/>
@@ -22,10 +23,10 @@
 
       <div class="messageDelay">
         <div><span>Задержка сообщений</span></div>
-        <div><input><span style="margin-left: 15px">мс</span></div>
+        <div><input [(ngModel)]="messagesBlock.delay"><span style="margin-left: 15px">мс</span></div>
       </div>
       <div class="cardRow">
-        <div class="card" *ngFor="let messageToChat of messagesToChat, let i = index">
+        <div class="card" *ngFor="let messageToChat of messagesBlock.messages, let i = index" [ngClass]="{off: messageToChat.required == false}" >
           <div class="head">
             <div class="left">
               <span class="name">{{messageToChat.name}}</span>
@@ -35,8 +36,9 @@
                 <img src="assets/icons/settings-icon.svg" alt="">
               </div>
               <div class="toggleWrapper">
-                <input type="checkbox" name="toggle{{i}}" class="mobileToggle" id="toggle{{i}}" checked>
-                <label for="toggle{{i}}"></label>
+                <input type="checkbox" name="toggle{{i}}" class="mobileToggle" id="toggleCardMessage{{i}}"
+                       [checked]="messageToChat.required == true" (change)="messageToChat.required = !messageToChat.required">
+                <label for="toggleCardMessage{{i}}"></label>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfigurationManagerService} from "../../../configuration-manager.service";
 import {MessageToChat} from "../../../models/message-to-chat.model";
+import {MessagesBlockModel} from "../../../models/messages-block.model";
 
 @Component({
   selector: 'app-league-of-legends',
@@ -9,10 +10,11 @@ import {MessageToChat} from "../../../models/message-to-chat.model";
 })
 export class LeagueOfLegendsComponent implements OnInit {
 
-  public messagesToChat: MessageToChat[] = [];
+  public messagesBlock: MessagesBlockModel = new MessagesBlockModel([new MessageToChat(0)]);
 
   constructor(configurationManagerService: ConfigurationManagerService) {
-    this.messagesToChat = configurationManagerService.getMessagesToChat('league-of-legends');
+    this.messagesBlock = configurationManagerService.getMessagesBlock('league-of-legends');
+    console.log('yaej')
   }
 
   ngOnInit(): void {
