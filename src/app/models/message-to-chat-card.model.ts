@@ -1,10 +1,11 @@
-export class MessageToChat{
-  name = 'null';
-  message = 'no message';
-  required = true;
+import {CardModel} from "./card.model";
 
+export class MessageToChatCardModel extends CardModel{
 
   constructor(public id: number, _name?: string, _message?: string) {
+
+    super();
+
     if(_name){
       this.name = _name;
     }

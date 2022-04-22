@@ -1,44 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import {ConfigurationManagerService} from "../../../configuration-manager.service";
-import {MessageToChat} from "../../../models/message-to-chat.model";
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {ConfigurationManagerService} from "../../../services/configuration-manager.service";
+import {MessageToChatCardModel} from "../../../models/message-to-chat-card.model";
 import {MessagesBlockModel} from "../../../models/messages-block.model";
+// import {SpoilerDirective} from "../../../directives/spoiler.directive";
 
 @Component({
   selector: 'app-league-of-legends',
   templateUrl: './league-of-legends.component.html',
   styleUrls: ['./league-of-legends.component.css']
 })
-export class LeagueOfLegendsComponent implements OnInit {
+export class LeagueOfLegendsComponent implements AfterViewInit{
 
-  public messagesBlock: MessagesBlockModel = new MessagesBlockModel([new MessageToChat(0)]);
+  // @ts-ignore
+  @ViewChild('chatMessagesSpoilerContent') chatMessagesSpoilerContent: ElementRef;
+  // @ts-ignore
+  @ViewChild('chatMessagesSpoilerControl') chatMessagesSpoilerControl: ElementRef;
+
+  public messagesBlock: MessagesBlockModel = new MessagesBlockModel([new MessageToChatCardModel(0)]);
 
   constructor(configurationManagerService: ConfigurationManagerService) {
     this.messagesBlock = configurationManagerService.getMessagesBlock('league-of-legends');
-    console.log('yaej')
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+
+    console.log(this.messagesBlock.required)
+
+    if (!this.messagesBlock.required) {
+      this.toggleSpoiler(this.chatMessagesSpoilerContent.nativeElement, this.chatMessagesSpoilerControl.nativeElement)
+    }
+
   }
 
 
-  toggleSpoiler(checkBox: HTMLElement, elem: HTMLElement, event: Event){
+  toggleSpoiler(elem: HTMLElement, control: HTMLElement){
+    console.log(this.messagesBlock.required)
     // @ts-ignore
-    if(!checkBox.checked){
+    if(elem.classList.contains("closed")){
       elem.classList.remove("closed");
       elem.classList.add("opened");
       elem.style.marginBottom = "inherit";
+      // elem.style.height = "inherit";
 
     } else{
       elem.classList.remove("opened")
       elem.classList.add("closed")
       elem.style.marginBottom = String(-elem.offsetHeight) + "px";
+      // elem.style.height = "0";
 
     }
-    // @ts-ignore
-    checkBox.checked = !checkBox.checked;
-    this.toggleSpoilerImg(event.target as HTMLElement);
-
+    this.toggleSpoilerImg(control);
   }
+
 
   toggleSpoilerImg(img: HTMLElement){
     if(img.style.transform){
@@ -48,4 +61,15 @@ export class LeagueOfLegendsComponent implements OnInit {
     }
   }
 
+  toggleBlock(block: MessagesBlockModel, content: HTMLElement, spoilerControl: HTMLElement){
+
+    if(
+      !content.classList.contains("closed") && block.required ||
+      content.classList.contains("closed") && !block.required
+    ){
+      this.toggleSpoiler(content, spoilerControl);
+    }
+
+    block.required = !block.required;
+  }
 }

@@ -4,10 +4,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {StreamModule} from "./components/stream/stream.module";
-import {OptionsService} from "./options.service";
 import {GamesModule} from "./components/games/games.module";
-import {NavPanelHandlerService} from "./nav-panel-handler.service";
+import {NavPanelHandlerService} from "./services/nav-panel-handler.service";
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
+import {ServerHandlerService} from "./services/server-handler.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,11 +20,12 @@ import { ControlPanelComponent } from './components/control-panel/control-panel.
     BrowserModule,
     StreamModule,
     GamesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-    OptionsService,
-    NavPanelHandlerService
+    NavPanelHandlerService,
+    ServerHandlerService
   ],
   bootstrap: [AppComponent]
 })

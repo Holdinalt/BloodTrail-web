@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavbarPieceModel, NavOption} from "../../models/navbar-piece.model";
-import {NavPanelHandlerService} from "../../nav-panel-handler.service";
+import {NavPanelHandlerService} from "../../services/nav-panel-handler.service";
 
 
 

@@ -1,14 +1,15 @@
-import {MessageToChat} from "./message-to-chat.model";
+import {MessageToChatCardModel} from "./message-to-chat-card.model";
+import {BlockModel} from "./block.model";
 
-export class MessagesBlockModel {
+export class MessagesBlockModel extends BlockModel{
 
-  name = 'Сообщения в чат'
   delay?: number;
-  required = true;
 
-  messages: MessageToChat[]
+  messages: MessageToChatCardModel[]
 
-  constructor(_messages: MessageToChat[], _required?: boolean,_delay?: number, _name?: string) {
+  constructor(_messages: MessageToChatCardModel[], _required?: boolean,_delay?: number, _name?: string) {
+
+    super()
 
     this.messages = _messages;
 

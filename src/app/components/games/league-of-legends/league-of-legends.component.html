@@ -7,17 +7,19 @@
       <div>
         <div class="toggleWrapper">
           <input type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked
-                 [checked]="messagesBlock.required == true" (change)="messagesBlock.required = !messagesBlock.required">
+                 [checked]="messagesBlock.required == true"
+                 (change)="toggleBlock(messagesBlock, chatMessagesSpoilerContent, chatMessagesSpoilerControl)"
+          >
           <label for="toggleHead"></label>
         </div>
         <span>{{messagesBlock.name}}</span>
       </div>
       <div>
-        <input #chatMessagesSpoiler hidden="hidden" checked="checked" type="checkbox"/>
-        <img class="spoilerToggle" src="assets/icons/spoiler-big-icon.svg" alt="" (click)="toggleSpoiler(chatMessagesSpoiler, chatMessages, $event)">
+        <img #chatMessagesSpoilerControl class="spoilerToggle"
+             src="assets/icons/spoiler-big-icon.svg" alt="" (click)="toggleSpoiler(chatMessagesSpoilerContent, chatMessagesSpoilerControl)">
       </div>
     </div>
-    <div #chatMessages class="spoilerContent">
+    <div #chatMessagesSpoilerContent  class="spoilerContent">
 
       <hr>
 

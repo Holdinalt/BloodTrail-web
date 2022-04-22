@@ -1,4 +1,4 @@
-import {NavbarPieceModel, NavOption} from "./models/navbar-piece.model";
+import {NavbarPieceModel, NavOption} from "../models/navbar-piece.model";
 
 export class NavPanelHandlerService {
 
