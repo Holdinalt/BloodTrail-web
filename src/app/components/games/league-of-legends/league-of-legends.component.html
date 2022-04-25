@@ -6,17 +6,19 @@
     <div class="boxHead">
       <div>
         <div class="toggleWrapper">
-          <input type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked
-                 [checked]="messagesBlock.required == true"
-                 (change)="toggleBlock(messagesBlock, chatMessagesSpoilerContent, chatMessagesSpoilerControl)"
-          >
+          <input spoilerControl [ContentRef]="chatMessagesSpoilerContent" [Block]="messagesBlock" [ToggleRef]="chatMessagesSpoilerToggle"
+                 type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked
+                 [checked]="messagesBlock.required == true">
+
           <label for="toggleHead"></label>
         </div>
         <span>{{messagesBlock.name}}</span>
       </div>
       <div>
-        <img #chatMessagesSpoilerControl class="spoilerToggle"
-             src="assets/icons/spoiler-big-icon.svg" alt="" (click)="toggleSpoiler(chatMessagesSpoilerContent, chatMessagesSpoilerControl)">
+        <img spoilerToggle [ContentRef]="chatMessagesSpoilerContent" [isHidden]="!messagesBlock.required"
+             #chatMessagesSpoilerToggle class="spoilerToggle"
+             src="assets/icons/spoiler-big-icon.svg" alt="" >
+
       </div>
     </div>
     <div #chatMessagesSpoilerContent  class="spoilerContent">
