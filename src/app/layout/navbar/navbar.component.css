@@ -119,3 +119,8 @@ a{
   margin-left: 21px;
   align-self: center;
 }
+
+nav{
+  position: fixed;
+  z-index: 150;
+}

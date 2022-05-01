@@ -2,12 +2,12 @@
   <span class="category">Игры</span>
   <span class="templateName">League of Legends</span>
 
-  <div class="box" [ngClass]="{off: messagesBlock.required == false}">
+  <div class="box" *ngIf="messagesBlock" [ngClass]="{off: messagesBlock.required == false}">
     <div class="boxHead">
       <div>
         <div class="toggleWrapper">
           <input spoilerControl [ContentRef]="chatMessagesSpoilerContent" [Block]="messagesBlock" [ToggleRef]="chatMessagesSpoilerToggle"
-                 type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked
+            type="checkbox" name="toggleHead" class="mobileToggle" id="toggleHead" checked
                  [checked]="messagesBlock.required == true">
 
           <label for="toggleHead"></label>
@@ -29,6 +29,7 @@
         <div><span>Задержка сообщений</span></div>
         <div><input [(ngModel)]="messagesBlock.delay"><span style="margin-left: 15px">мс</span></div>
       </div>
+
       <div class="cardRow">
         <div class="card" *ngFor="let messageToChat of messagesBlock.messages, let i = index" [ngClass]="{off: messageToChat.required == false}" >
           <div class="head">
@@ -41,13 +42,61 @@
               </div>
               <div class="toggleWrapper">
                 <input type="checkbox" name="toggle{{i}}" class="mobileToggle" id="toggleCardMessage{{i}}"
-                       [checked]="messageToChat.required == true" (change)="messageToChat.required = !messageToChat.required">
+                       [checked]="messageToChat.required == true" (change)="messageToChat.toggle()">
                 <label for="toggleCardMessage{{i}}"></label>
               </div>
             </div>
           </div>
           <div class="content">
             {{messageToChat.message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" *ngIf="predictionBlock" [ngClass]="{off: predictionBlock.required == false}">
+    <div class="boxHead">
+      <div>
+        <div class="toggleWrapper">
+          <input spoilerControl [ContentRef]="predictionSpoilerContent" [Block]="predictionBlock" [ToggleRef]="predictionSpoilerToggle"
+                 type="checkbox" name="toggleHead" class="mobileToggle" id="togglePredictionHead" checked
+                 [checked]="predictionBlock.required == true">
+
+          <label for="togglePredictionHead"></label>
+        </div>
+        <span>{{predictionBlock.name}}</span>
+      </div>
+      <div>
+        <img spoilerToggle [ContentRef]="predictionSpoilerContent" [isHidden]="!predictionBlock.required"
+             #predictionSpoilerToggle class="spoilerToggle"
+             src="assets/icons/spoiler-big-icon.svg" alt="" >
+
+      </div>
+    </div>
+    <div #predictionSpoilerContent  class="spoilerContent">
+
+      <hr>
+
+      <div class="cardRow">
+        <div class="card" *ngFor="let prediction of predictionBlock.cards, let i = index" [ngClass]="{off: prediction.required == false}" >
+          <div class="head">
+            <div class="left">
+              <span class="name">{{prediction.name}}</span>
+            </div>
+            <div class="right">
+              <div class="settings">
+                <img src="assets/icons/settings-icon.svg" alt="">
+              </div>
+              <div class="toggleWrapper">
+                <input type="checkbox" name="toggle{{i}}" class="mobileToggle" id="toggleCardPrediction{{i}}"
+                       [checked]="prediction.required == true" (change)="prediction.toggle()">
+                <label for="toggleCardPrediction{{i}}"></label>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            {{prediction.description}}
           </div>
         </div>
       </div>

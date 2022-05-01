@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ConfigurationManagerService} from "../../../services/configuration-manager.service";
-import {MessageToChatCardModel} from "../../../models/message-to-chat-card.model";
-import {MessagesBlockModel} from "../../../models/messages-block.model";
+import {MessagesBlockModel} from "../../../models/blocks/messages-block.model";
+import {PredictionBlockModel} from "../../../models/blocks/prediction-block.model";
 
 
 @Component({
@@ -11,10 +11,12 @@ import {MessagesBlockModel} from "../../../models/messages-block.model";
 })
 export class LeagueOfLegendsComponent{
 
-  public messagesBlock: MessagesBlockModel = new MessagesBlockModel([new MessageToChatCardModel(0)]);
+  public messagesBlock?: MessagesBlockModel;
+  public predictionBlock?: PredictionBlockModel;
 
   constructor(configurationManagerService: ConfigurationManagerService) {
     this.messagesBlock = configurationManagerService.getMessagesBlock('league-of-legends');
+    this.predictionBlock = configurationManagerService.getPredictionBlock('league-of-legends');
   }
 
 }

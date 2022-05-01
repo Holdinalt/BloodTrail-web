@@ -1,6 +1,6 @@
 import {Directive, HostListener, Input} from '@angular/core';
 import {SpoilerModel} from "./spoiler.model";
-import {BlockModel} from "../../models/block.model";
+import {BlockModel} from "../../models/blocks/block.model";
 
 @Directive({
   selector: '[spoilerControl]'
@@ -15,7 +15,8 @@ export class SpoilerControlDirective{
   @HostListener('click') toggleSpoiler(){
     if(this.ContentRef && this.Block){
 
-      this.Block.required = !this.Block.required
+      this.Block.toggle();
+      // console.log(this.Block)
 
       if(this.Block?.required){
         SpoilerModel.showSpoiler(this.ContentRef);
