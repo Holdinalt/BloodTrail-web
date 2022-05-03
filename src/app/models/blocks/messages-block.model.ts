@@ -4,22 +4,22 @@ import {ConfigurationManagerService} from "../../services/configuration-manager.
 
 export class MessagesBlockModel extends BlockModel{
 
-  delay?: number;
+  _delay = 0;
 
-  messages: MessageToChatCardModel[]
+  messages: MessageToChatCardModel[] = [];
 
-  // TODO cfg
-
-  constructor(cfg: ConfigurationManagerService, _messages: MessageToChatCardModel[], _required?: boolean, _delay?: number, _name?: string) {
+  constructor(private cfg: ConfigurationManagerService,
+              private game: string,
+              _required?: boolean,
+              _delay?: number,
+              _name?: string) {
 
     super()
 
     this.name = "Сообщения в чат"
 
-    this.messages = _messages;
-
     if(_required){
-      this.required = _required;
+      this._required = _required;
     }
 
     if(_name){
@@ -27,16 +27,32 @@ export class MessagesBlockModel extends BlockModel{
     }
 
     if(_delay){
-      this.delay = _delay;
+      this._delay = _delay;
     }
 
   }
 
+  public addNewMessageCard(id: number, name?: string, message?: string, required?: boolean){
+    this.messages?.push(new MessageToChatCardModel(
+      this.cfg, this.game, id, name, message, required
+    ))
+  }
+
   public override set required(b: boolean){
     this._required = b;
+    this.cfg.addNewEditOption('gameMessage' + this.game + 'Block' + 'Required', String(b));
   }
 
   public override get required(){
     return this._required;
+  }
+
+  public set delay(delay: number){
+    this._delay = delay;
+    this.cfg.addNewEditOption('gameMessage' + this.game + 'Block' + 'Delay', String(delay));
+  }
+
+  public get delay(){
+    return this._delay;
   }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {MessageToChatCardModel} from "../models/cards/message-to-chat-card.model";
 import {MessagesBlockModel} from "../models/blocks/messages-block.model";
 import {ServerHandlerService} from "./server-handler.service";
 import {OptionModel} from "../models/option.model";
@@ -18,17 +17,13 @@ export class ConfigurationManagerService {
   constructor(private server: ServerHandlerService) {
 
     // temp // Переделать
-    this.messagesBlocks.set('league-of-legends',
-        new MessagesBlockModel(this,
-            [new MessageToChatCardModel(0, 'Cмерть', 'КАКУМЕР KEKWait', true),
-              new MessageToChatCardModel(1, 'Cоло убийство', 'Пентакилл', true),
-              new MessageToChatCardModel(2, 'Пентакилл', 'INHUMAN REACTION', true)
-              //new MessageToChat(3, 'Кража дракона', 'Легчайший дрейк EZ')
-            ],
-          true,
-          5000
-        )
-      );
+
+    let messModel = new MessagesBlockModel(this, 'LOL', true, 5000);
+    messModel.addNewMessageCard(0, 'Cмерть', 'КАКУМЕР KEKWait', true);
+    messModel.addNewMessageCard(1, 'Cоло убийство', 'Пентакилл', true);
+    messModel.addNewMessageCard(2, 'Пентакилл', 'INHUMAN REACTION', true);
+
+    this.messagesBlocks.set('league-of-legends', messModel)
 
 
     let predModel = new PredictionBlockModel (this, 'LOL', true);

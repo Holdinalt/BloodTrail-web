@@ -6,7 +6,10 @@ export class PredictionBlockModel extends BlockModel{
 
   public cards: PredictionCardModel[] = [];
 
-  constructor(private cfg: ConfigurationManagerService, private game: string, _required?: boolean, _name?: string) {
+  constructor(private cfg: ConfigurationManagerService,
+              private game: string,
+              _required?: boolean,
+              _name?: string) {
     super();
 
     this.name = "Предсказания";
@@ -20,7 +23,7 @@ export class PredictionBlockModel extends BlockModel{
     }
   }
 
-  public addNewPredictionCard(id: number, name: string, description: string, required: boolean){
+  public addNewPredictionCard(id: number, name?: string, description?: string, required?: boolean){
     this.cards?.push(new PredictionCardModel(
       this.cfg, this.game, id, name, description, required
     ))
@@ -34,5 +37,4 @@ export class PredictionBlockModel extends BlockModel{
   public override get required(){
     return this._required;
   }
-
 }
