@@ -17,6 +17,16 @@ export class LeagueOfLegendsComponent{
   constructor(configurationManagerService: ConfigurationManagerService) {
     this.messagesBlock = configurationManagerService.getMessagesBlock('league-of-legends');
     this.predictionBlock = configurationManagerService.getPredictionBlock('league-of-legends');
+    console.log(this.messagesBlock)
+
+    configurationManagerService.notifierUpdate.subscribe(x=>{
+      if(x){
+        this.messagesBlock = configurationManagerService.getMessagesBlock('league-of-legends');
+        this.predictionBlock = configurationManagerService.getPredictionBlock('league-of-legends');
+        console.log('updated')
+        console.log(this.messagesBlock)
+      }
+    })
   }
 
 }

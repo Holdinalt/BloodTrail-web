@@ -3,6 +3,8 @@ import {MessagesBlockModel} from "../models/blocks/messages-block.model";
 import {ServerHandlerService} from "./server-handler.service";
 import {OptionModel} from "../models/option.model";
 import {PredictionBlockModel} from "../models/blocks/prediction-block.model";
+import {ChangesConformerComponent} from "../layout/changes-conformer/changes-conformer.component";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,17 @@ export class ConfigurationManagerService {
   editedOptionsMap = new Map<string, string>();
 
   messagesBlocks = new Map<string, MessagesBlockModel>();
-  predictionBlocks = new Map<string, PredictionBlockModel>();
+  predictionBlocks = new Map<string, PredictionBlockModel>()
 
-  constructor(private server: ServerHandlerService) {
+  private rollbackMessagesBocks?: Map<string, MessagesBlockModel>;
+  private rollbackPredictionBlocks?: Map<string, PredictionBlockModel>;
+
+  notifierAboutChanges = new Subject();
+  notifierUpdate = new Subject();
+
+  constructor(
+    private server: ServerHandlerService,
+              ) {
 
     // temp // Переделать
 
@@ -33,8 +43,7 @@ export class ConfigurationManagerService {
 
     this.predictionBlocks.set('league-of-legends',predModel)
 
-
-
+    // this.createRollBack();
   }
 
   getMessagesBlock(game: string): MessagesBlockModel | undefined{
@@ -66,13 +75,44 @@ export class ConfigurationManagerService {
     }
   }
 
+  // TODO доделать роллбеки
+  // createRollBack(){
+  //   this.rollbackMessagesBocks = new Map<string, MessagesBlockModel>(this.messagesBlocks);
+  //   this.rollbackPredictionBlocks = new Map<string, PredictionBlockModel>(this.predictionBlocks);
+  // }
+
+  rollBack(){
+    // if(this.rollbackMessagesBocks){
+    //   this.messagesBlocks = this.rollbackMessagesBocks;
+    //   this.rollbackMessagesBocks = undefined;
+    //   console.log(this.messagesBlocks)
+    // }
+    //
+    // if(this.rollbackPredictionBlocks){
+    //   this.predictionBlocks = this.rollbackPredictionBlocks
+    //   this.rollbackPredictionBlocks = undefined;
+    // }
+
+    this.loadOptions();
+
+    this.notifierUpdate.next(true);
+  }
+
   addNewEditOption(key: string, value: string): void{
     console.log('New option added ' + key + ' = ' + value);
     this.editedOptionsMap.set(key, value);
+    this.notifierAboutChanges.next(true);
   }
 
   eraseEditedOption(key: string){
     this.editedOptionsMap.delete(key);
+    // if(this.editedOptionsMap.)
+  }
+
+  deleteEditedOptions(){
+    console.log('rollback')
+    this.editedOptionsMap.clear();
+    this.rollBack();
   }
 
   saveEditedOptions(){

@@ -1,0 +1,15 @@
+<div class="main" *ngIf="required">
+  <div class="content">
+    <div class="description">
+      <span>Обнаружены изменения! Сохранить?</span>
+    </div>
+    <div class="controllers">
+      <div>
+        <button class="cancel" (click)="clearChanges()">Отмена</button>
+      </div>
+      <div>
+        <button class="save" (click)="saveChanges()">Сохранить</button>
+      </div>
+    </div>
+  </div>
+</div>

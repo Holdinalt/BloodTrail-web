@@ -9,12 +9,14 @@ import {NavPanelHandlerService} from "./services/nav-panel-handler.service";
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import {ServerHandlerService} from "./services/server-handler.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ChangesConformerComponent } from './layout/changes-conformer/changes-conformer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ControlPanelComponent
+    ControlPanelComponent,
+    ChangesConformerComponent
   ],
   imports: [
     BrowserModule,
