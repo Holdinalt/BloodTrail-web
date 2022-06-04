@@ -1,0 +1,41 @@
+/*.spoiler {*/
+/*  display:inline;*/
+/*}*/
+
+/*.spoilerContent{*/
+/*  height:auto;*/
+/*  display:block;*/
+/*  transform: scaleY(1);*/
+/*}*/
+
+/*.spoilerChecked:checked + .spoilerContent{*/
+/*  display:block;*/
+/*  max-height:0;*/
+/*  transform: scaleY(0);*/
+/*  transform-origin: top;*/
+/*  transition: max-height 0.2s, transform 0.2s;*/
+/*}*/
+
+.spoilerToggle{
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  /*visibility: hidden;*/
+}
+
+.spoilerContent{
+  display:block;
+  transition: 0.3s all ease;
+  transform-origin: top;
+}
+
+.spoilerContent.opened{
+  transform: scaleY(1);
+}
+
+.spoilerContent.closed{
+  /*margin-bottom: -28%;*/
+  transform: scaleY(0);
+}
+
+
+

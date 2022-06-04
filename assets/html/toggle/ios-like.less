@@ -1,0 +1,75 @@
+
+// Starts Here!
+
+// Color Variables
+@lightgray: lightgray;
+@background: whitesmoke;
+
+.inactiveMixin {
+  content: "";
+  position: absolute;
+  display: block;
+
+}
+
+.beforeAnimation {
+  transition: .2s cubic-bezier(.24, 0, .5, 1);
+}
+
+.afterAnimation {
+  box-shadow: 0 3px 6px #00000029;
+  transition: .35s cubic-bezier(.54, 1.60, .5, 1);
+}
+
+// Mobile Toggle Switch
+.toggleWrapper {
+  input {
+    &.mobileToggle {
+      opacity: 0; // hides checkbox
+      position: absolute;
+      & + label {
+        position: relative;
+        display: inline-block;
+        user-select: none;
+        transition: .4s ease;
+        height: 40px;
+        width: 83px;
+        background: #BEBEBE;
+        //border: 1px solid #e4e4e4;
+        border-radius: 60px;
+        &:before {
+          .inactiveMixin;
+          .beforeAnimation;
+          height: 40px;
+          width: 83px;
+          top: 0;
+          left: 0;
+          border-radius: 30px;
+        }
+        &:after {
+          cursor: pointer;
+          .inactiveMixin;
+          .afterAnimation;
+          background: @background;
+          margin-left: 4px;
+          height: 34px;
+          width: 34px;
+          top: 3px;
+          left: 0;
+          border-radius: 60px;
+        }
+      }
+      // When Active
+      &:checked {
+        & + label:before {
+          background: #009B0A; // Active Color
+          transition: width .2s cubic-bezier(0, 0, 0, .1);
+        }
+        & + label:after {
+          left: 54px - 13px;
+
+        }
+      }
+    }
+  }
+}
