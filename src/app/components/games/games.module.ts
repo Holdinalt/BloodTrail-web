@@ -5,13 +5,15 @@ import {ConfigurationManagerService} from "../../services/configuration-manager.
 import {FormsModule} from "@angular/forms";
 import {SpoilerControlDirective} from "../../directives/spoiler/spoiler-control.directive";
 import {SpoilerToggleDirective} from "../../directives/spoiler/spoiler-toggle.directive";
+import {PopUpDirective} from "../../directives/pop-up.directive";
 
 
 @NgModule({
   declarations: [
     LeagueOfLegendsComponent,
     SpoilerControlDirective,
-    SpoilerToggleDirective
+    SpoilerToggleDirective,
+    PopUpDirective
   ],
     imports: [
         CommonModule,

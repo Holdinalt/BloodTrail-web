@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ConfigurationManagerService} from "../../../services/configuration-manager.service";
 import {MessagesBlockModel} from "../../../models/blocks/messages-block.model";
 import {PredictionBlockModel} from "../../../models/blocks/prediction-block.model";
+import {MessageToChatCardModel} from "../../../models/cards/message-to-chat-card.model";
 
 
 @Component({
@@ -27,6 +28,10 @@ export class LeagueOfLegendsComponent{
         console.log(this.messagesBlock)
       }
     })
+  }
+
+  saveInputMessage(input: HTMLInputElement, card: MessageToChatCardModel){
+    card.message = input.value;
   }
 
 }

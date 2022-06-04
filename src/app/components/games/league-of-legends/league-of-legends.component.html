@@ -38,7 +38,7 @@
             </div>
             <div class="right">
               <div class="settings">
-                <img src="assets/icons/settings-icon.svg" alt="">
+                <img #popUpOpener src="assets/icons/settings-icon.svg" alt="">
               </div>
               <div class="toggleWrapper">
                 <input type="checkbox" name="toggle{{i}}" class="mobileToggle" id="toggleCardMessage{{i}}"
@@ -50,6 +50,23 @@
           <div class="content">
             {{messageToChat.message}}
           </div>
+
+          <div PopUp [popUpCloser1]="popUpCloser1" [popUpCloser2]="popUpCloser2" [popUpOpener]="popUpOpener">
+            <div class="pop-Up">
+              <div class="head">
+                <span>Сообщения в чат: {{messageToChat.name}}</span>
+              </div>
+              <div class="input">
+                <span>Cообщение</span>
+                <input #input [value]="messageToChat.message">
+              </div>
+              <div class="controls">
+                <button #popUpCloser1 class="cancel">Отмена</button>
+                <button #popUpCloser2 class="save" (click)="saveInputMessage(input, messageToChat)">Сохранить</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
